@@ -8,18 +8,31 @@
   },
   "scripts": {
     "test": "node --test test/**/*.test.js",
+    "lint": "eslint . ; prettier --check .",
+    "format": "prettier --write .",
     "start": "fastify start -l info app.js",
     "dev": "fastify start -w -l info -P app.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint ; npm run format"
+    }
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fastify": "^4.26.1",
-    "fastify-plugin": "^4.0.0",
     "@fastify/autoload": "^5.0.0",
     "@fastify/sensible": "^5.0.0",
-    "fastify-cli": "^6.2.1"
+    "fastify": "^4.26.1",
+    "fastify-cli": "^6.2.1",
+    "fastify-plugin": "^4.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@eslint/js": "^9.5.0",
+    "eslint": "^9.5.0",
+    "globals": "^15.6.0",
+    "husky": "^9.0.11",
+    "prettier": "^3.3.2"
+  }
 }
