@@ -31,7 +31,7 @@ module.exports = async function (fastify) {
         }
     }, async function (request, reply) {
         const { id, nombre, email } = request.query;
-        const usuarios = await execute(id, nombre, email);
+        const usuarios = await execute(fastify, id, nombre, email);
         reply.code(200).send(usuarios);
     });
 };
