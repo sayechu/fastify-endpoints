@@ -1,11 +1,10 @@
-"use strict";
-
-const path = require("node:path");
-const AutoLoad = require("@fastify/autoload");
+import { FastifyInstance } from "fastify";
+import path from "node:path";
+import AutoLoad from "@fastify/autoload";
 
 const options = {};
 
-module.exports = async function (fastify, opts) {
+module.exports = async function (fastify: FastifyInstance, opts: any) {
     fastify.register(AutoLoad, {
         dir: path.join(__dirname, "plugins"),
         options: Object.assign({}, opts),

@@ -2,7 +2,7 @@
     "name": "myproject",
     "version": "1.0.0",
     "description": "This project was bootstrapped with Fastify-CLI.",
-    "main": "app.js",
+    "main": "app.ts",
     "directories": {
         "test": "test"
     },
@@ -10,8 +10,8 @@
         "test": "node --test test/**/*.test.js",
         "lint": "eslint . ; prettier --check .",
         "format": "prettier --write .",
-        "start": "fastify start -l info app.js",
-        "dev": "fastify start -w -l info -P app.js"
+        "build": "tsc -p tsconfig.json",
+        "start": "fastify start dist/app.js"
     },
     "husky": {
         "hooks": {
@@ -30,6 +30,7 @@
     },
     "devDependencies": {
         "@eslint/js": "^9.5.0",
+        "@types/node": "^20.14.8",
         "eslint": "^9.5.0",
         "globals": "^15.6.0",
         "husky": "^9.0.11",

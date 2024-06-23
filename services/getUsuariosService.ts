@@ -1,5 +1,5 @@
-import { FastifyInstance } from 'fastify';
-import '@fastify/sensible';
+import { FastifyInstance } from "fastify";
+import "@fastify/sensible";
 
 interface Usuario {
     id: string;
@@ -7,7 +7,12 @@ interface Usuario {
     email: string;
 }
 
-const execute = async (fastify: FastifyInstance, id?: string, nombre?: string, email?: string): Promise<Usuario[]> => {
+const execute = async (
+    fastify: FastifyInstance,
+    id?: string,
+    nombre?: string,
+    email?: string
+): Promise<Usuario[]> => {
     const usuarios: Usuario[] = [
         { id: "1", nombre: "juan", email: "juan@gmail.com" },
         { id: "2", nombre: "juanlopez", email: "juanlopez@gmail.com" },

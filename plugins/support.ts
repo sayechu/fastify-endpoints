@@ -1,8 +1,7 @@
-"use strict";
+import { FastifyInstance } from "fastify";
+import fp from "fastify-plugin";
 
-const fp = require("fastify-plugin");
-
-module.exports = fp(async function (fastify, opts) {
+module.exports = fp(async function (fastify: FastifyInstance) {
     fastify.decorate("someSupport", function () {
         return "hugs";
     });
