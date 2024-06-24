@@ -1,28 +1,30 @@
-export const getUsuariosSchema = {
+export const postUsuariosSchema = {
     schema: {
-        querystring: {
+        body: {
             type: "object",
+            required: ["nombre", "email"],
             properties: {
-                id: { type: "string" },
                 nombre: { type: "string" },
                 email: { type: "string" },
             },
             additionalProperties: false,
         },
         response: {
-            200: {
-                type: "array",
-                items: {
-                    type: "object",
-                    properties: {
-                        id: { type: "string" },
-                        nombre: { type: "string" },
-                        email: { type: "string" },
-                    },
-                    required: ["id", "nombre", "email"],
+            201: {
+                type: "object",
+                properties: {
+                    id: { type: "string" },
+                    nombre: { type: "string" },
+                    email: { type: "string" },
                 },
             },
-            404: {
+            400: {
+                type: "object",
+                properties: {
+                    error: { type: "string" },
+                },
+            },
+            409: {
                 type: "object",
                 properties: {
                     error: { type: "string" },

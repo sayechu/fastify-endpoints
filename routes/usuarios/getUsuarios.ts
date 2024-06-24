@@ -2,7 +2,7 @@ import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { execute } from "../../services/getUsuariosService";
 import { getUsuariosSchema } from "../../services/getUsuariosSchema";
 
-interface QueryString {
+interface GetUsuariosRequest {
     id?: string;
     nombre?: string;
     email?: string;
@@ -13,7 +13,7 @@ export default async function (fastify: FastifyInstance) {
         "/",
         getUsuariosSchema,
         async function (
-            request: FastifyRequest<{ Querystring: QueryString }>,
+            request: FastifyRequest<{ Querystring: GetUsuariosRequest }>,
             reply: FastifyReply
         ) {
             const { id, nombre, email } = request.query;
