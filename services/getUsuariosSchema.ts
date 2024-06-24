@@ -2,7 +2,7 @@ export const getUsuariosSchema = {
     schema: {
         querystring: {
             type: "object",
-                properties: {
+            properties: {
                 id: { type: "string" },
                 nombre: { type: "string" },
                 email: { type: "string" },
@@ -12,9 +12,9 @@ export const getUsuariosSchema = {
         response: {
             200: {
                 type: "array",
-                    items: {
+                items: {
                     type: "object",
-                        properties: {
+                    properties: {
                         id: { type: "string" },
                         nombre: { type: "string" },
                         email: { type: "string" },
@@ -25,15 +25,15 @@ export const getUsuariosSchema = {
             404: {
                 type: "object",
                 properties: {
-                    error: { type: "string" }
-                }
+                    error: { type: "string" },
+                },
             },
             500: {
                 type: "object",
                 properties: {
-                    error: { type: "string" }
-                }
-            }
+                    error: { type: "string" },
+                },
+            },
         },
     },
-}
+};
