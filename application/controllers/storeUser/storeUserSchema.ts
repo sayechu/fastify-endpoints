@@ -22,18 +22,21 @@ export const storeUserSchema = {
                 type: "object",
                 properties: {
                     error: { type: "string" },
+                    message: { type: "string" },
                 },
             },
             409: {
                 type: "object",
                 properties: {
                     error: { type: "string" },
+                    message: { type: "string" },
                 },
             },
             500: {
                 type: "object",
                 properties: {
                     error: { type: "string" },
+                    message: { type: "string" },
                 },
             },
         },
