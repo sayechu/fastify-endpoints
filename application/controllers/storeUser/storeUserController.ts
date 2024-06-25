@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { execute } from "../../../services/postUsuariosService";
+import { execute } from "../../services/storeUsuarioService";
 
 interface PostUsuarioBody {
     nombre: string;
