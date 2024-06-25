@@ -16,7 +16,7 @@ export default async function (fastify: FastifyInstance) {
             reply: FastifyReply
         ) {
             const { nombre, email } = request.body;
-            const usuarioCreado = await execute(nombre, email);
+            const usuarioCreado = await execute(fastify, nombre, email);
             reply.code(201).send(usuarioCreado);
         }
     );
