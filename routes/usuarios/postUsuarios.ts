@@ -2,7 +2,7 @@ import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { postUsuariosSchema } from "../../services/postUsuariosSchema";
 import { execute } from "../../services/postUsuariosService";
 
-interface PostUsuariosRequest {
+interface PostUsuarioBody {
     nombre: string;
     email: string;
 }
@@ -12,11 +12,11 @@ export default async function (fastify: FastifyInstance) {
         "/",
         postUsuariosSchema,
         async function (
-            request: FastifyRequest<{ Body: PostUsuariosRequest }>,
+            request: FastifyRequest<{ Body: PostUsuarioBody }>,
             reply: FastifyReply
         ) {
             const { nombre, email } = request.body;
-            const usuarioCreado = await execute(fastify, nombre, email);
+            const usuarioCreado = await execute(nombre, email);
             reply.code(201).send(usuarioCreado);
         }
     );
