@@ -1,4 +1,4 @@
-export const getUsuariosSchema = {
+export const getUsersSchema = {
     schema: {
         querystring: {
             type: "object",
