@@ -1,19 +1,12 @@
 import { FastifyInstance } from "fastify";
 import path from "node:path";
 import AutoLoad from "@fastify/autoload";
+import sensible from "@fastify/sensible";
 
-const options = {};
-
-module.exports = async function (fastify: FastifyInstance, opts: any) {
-    fastify.register(AutoLoad, {
-        dir: path.join(__dirname, "plugins"),
-        options: Object.assign({}, opts),
-    });
-
+export default async function (fastify: FastifyInstance, opts: any) {
+    fastify.register(sensible);
     fastify.register(AutoLoad, {
         dir: path.join(__dirname, "routes"),
         options: Object.assign({}, opts),
     });
-};
-
-module.exports.options = options;
+}
