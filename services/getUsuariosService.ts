@@ -1,23 +1,20 @@
 import { FastifyInstance } from "fastify";
 import "@fastify/sensible";
+import prisma from "../utils/prisma";
 
 interface Usuario {
-    id: string;
+    id: number;
     nombre: string;
     email: string;
 }
 
 const execute = async (
     fastify: FastifyInstance,
-    id?: string,
+    id?: number,
     nombre?: string,
     email?: string
 ): Promise<Usuario[]> => {
-    const usuarios: Usuario[] = [
-        { id: "1", nombre: "juan", email: "juan@gmail.com" },
-        { id: "2", nombre: "juanlopez", email: "juanlopez@gmail.com" },
-        { id: "3", nombre: "juan", email: "juan@gmail.com" },
-    ];
+    const usuarios: Usuario[] = await prisma.user.findMany();
     if (!usuarios.length) {
         throw fastify.httpErrors.notFound("No se encontraron usuarios.");
     }
@@ -27,7 +24,7 @@ const execute = async (
 
     return usuarios.filter(
         (usuario) =>
-            id === usuario.id ||
+            id == usuario.id ||
             nombre === usuario.nombre ||
             email === usuario.email
     );
