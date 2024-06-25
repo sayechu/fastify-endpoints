@@ -1,4 +1,4 @@
-import prisma from "../utils/prisma";
+import prisma from "../../utils/prisma";
 import "@fastify/sensible";
 import { FastifyInstance } from "fastify";
 

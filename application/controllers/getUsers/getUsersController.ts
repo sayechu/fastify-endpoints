@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { execute } from "../../../services/getUsuariosService";
+import { execute } from "../../services/getUsuariosService";
 
 interface GetUsuariosRequest {
     id?: number;
