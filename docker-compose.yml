@@ -1,9 +1,7 @@
 services:
     db:
         container_name: pg_container
-        build:
-            context: .
-            dockerfile: Dockerfile
+        image: postgres:13
         restart: always
         environment:
             POSTGRES_USER: root
