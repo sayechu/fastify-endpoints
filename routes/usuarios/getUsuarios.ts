@@ -1,24 +1,7 @@
-import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import { execute } from "../../services/getUsuariosService";
-import { getUsuariosSchema } from "../../services/getUsuariosSchema";
-
-interface GetUsuariosRequest {
-    id?: number;
-    nombre?: string;
-    email?: string;
-}
+import { FastifyInstance } from "fastify";
+import { getUsersSchema } from "../../application/controllers/getUsers/getUsersSchema";
+import { getUsersHandler } from "../../application/controllers/getUsers/getUsersController";
 
 export default async function (fastify: FastifyInstance) {
-    fastify.get(
-        "/",
-        getUsuariosSchema,
-        async function (
-            request: FastifyRequest<{ Querystring: GetUsuariosRequest }>,
-            reply: FastifyReply
-        ) {
-            const { id, nombre, email } = request.query;
-            const usuarios = await execute(fastify, id, nombre, email);
-            reply.code(200).send(usuarios);
-        }
-    );
+    fastify.get("/", getUsersSchema, getUsersHandler);
 }
