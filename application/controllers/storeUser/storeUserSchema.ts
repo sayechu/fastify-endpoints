@@ -1,4 +1,4 @@
-export const postUsuariosSchema = {
+export const storeUserSchema = {
     schema: {
         body: {
             type: "object",
