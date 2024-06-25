@@ -1,4 +1,4 @@
-export const postUsuariosSchema = {
+export const storeUserSchema = {
     schema: {
         body: {
             type: "object",
@@ -22,18 +22,21 @@ export const postUsuariosSchema = {
                 type: "object",
                 properties: {
                     error: { type: "string" },
+                    message: { type: "string" },
                 },
             },
             409: {
                 type: "object",
                 properties: {
                     error: { type: "string" },
+                    message: { type: "string" },
                 },
             },
             500: {
                 type: "object",
                 properties: {
                     error: { type: "string" },
+                    message: { type: "string" },
                 },
             },
         },

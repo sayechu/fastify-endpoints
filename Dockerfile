@@ -1,7 +1,0 @@
-FROM postgres:13
-
-MAINTAINER Santi Ayechu
-
-ENV POSTGRES_USER=root
-ENV POSTGRES_PASSWORD=password
-ENV POSTGRES_DB=mydb

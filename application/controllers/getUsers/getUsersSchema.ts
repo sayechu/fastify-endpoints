@@ -1,4 +1,4 @@
-export const getUsuariosSchema = {
+export const getUsersSchema = {
     schema: {
         querystring: {
             type: "object",
@@ -26,12 +26,14 @@ export const getUsuariosSchema = {
                 type: "object",
                 properties: {
                     error: { type: "string" },
+                    message: { type: "string" },
                 },
             },
             500: {
                 type: "object",
                 properties: {
                     error: { type: "string" },
+                    message: { type: "string" },
                 },
             },
         },

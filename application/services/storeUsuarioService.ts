@@ -1,4 +1,4 @@
-import prisma from "../utils/prisma";
+import prisma from "../../utils/prisma";
 import "@fastify/sensible";
 import { FastifyInstance } from "fastify";
 
@@ -24,13 +24,12 @@ export const execute = async (
         );
     }
     try {
-        const newUser: Usuario = await prisma.user.create({
+        return await prisma.user.create({
             data: {
                 nombre: nombre,
                 email: email,
             },
         });
-        return newUser;
     } catch (error) {
         throw fastify.httpErrors.internalServerError(
             "Error del servidor al intentar guardar el usuario."
