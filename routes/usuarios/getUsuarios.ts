@@ -3,7 +3,7 @@ import { execute } from "../../services/getUsuariosService";
 import { getUsuariosSchema } from "../../services/getUsuariosSchema";
 
 interface GetUsuariosRequest {
-    id?: string;
+    id?: number;
     nombre?: string;
     email?: string;
 }
