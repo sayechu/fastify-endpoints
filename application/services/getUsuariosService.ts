@@ -1,6 +1,7 @@
 import { FastifyInstance } from "fastify";
 import "@fastify/sensible";
-import prisma from "../../utils/prisma";
+import knex from "knex";
+import config from "../../knexfile";
 
 interface Usuario {
     id: number;
@@ -16,7 +17,7 @@ export const execute = async (
 ): Promise<Usuario[]> => {
     let usuarios: Usuario[];
     try {
-        usuarios = await prisma.user.findMany();
+        usuarios = await knex(config)("usuarios").select("*");
     } catch (error) {
         throw fastify.httpErrors.internalServerError(
             "Error del servidor al intentar recuperar los usuarios."

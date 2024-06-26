@@ -1,6 +1,7 @@
-import prisma from "../../utils/prisma";
 import "@fastify/sensible";
 import { FastifyInstance } from "fastify";
+import knex from "knex";
+import config from "../../knexfile";
 
 interface Usuario {
     id: number;
@@ -13,23 +14,22 @@ export const execute = async (
     nombre: string,
     email: string
 ): Promise<Usuario> => {
-    const existingUser = await prisma.user.findUnique({
-        where: {
-            email: email,
-        },
-    });
-    if (existingUser) {
+    const existingUser = await knex(config)("usuarios")
+        .select("*")
+        .where("email", email);
+    if (existingUser.length > 0) {
         throw fastify.httpErrors.conflict(
             "El email proporcionado ya está en uso."
         );
     }
     try {
-        return await prisma.user.create({
-            data: {
+        const [newUser] = await knex(config)("usuarios")
+            .insert({
                 nombre: nombre,
                 email: email,
-            },
-        });
+            })
+            .returning("*");
+        return newUser;
     } catch (error) {
         throw fastify.httpErrors.internalServerError(
             "Error del servidor al intentar guardar el usuario."
