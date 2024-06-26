@@ -11,8 +11,9 @@
         "lint": "eslint . ; prettier --check .",
         "format": "prettier --write .",
         "build": "prettier --write . & tsc -p tsconfig.json",
-        "start": "fastify start dist/app.js",
-        "migrate": "npx prisma migrate dev --name init"
+        "start": "fastify start -l info dist/app.js",
+        "migrate": "npx prisma migrate dev --name init",
+        "dev": "fastify start -w -l info -P dist/app.js"
     },
     "husky": {
         "hooks": {
